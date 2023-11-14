@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julia not smoking</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #262841;
+      color: white;
+    }
+
+    #timer p {
+      font-size: 18px;
+      margin: 10px;
+      color: #c7d9ff;
+    }
+
+    h1 {
+      color: #b4dfff;
+    }
+
+    #timer p span {
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Юля вже не куре</h1>
+  <div id="timer"></div>
+
+  <script>
+    function updateTimer() {
+      const targetDate = new Date("2023-05-09T18:15:00Z");
+      const currentDate = new Date();
+
+      let timeDifference = Math.abs(targetDate - currentDate);
+
+
+      const months = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 30));
+      const days = Math.floor((timeDifference % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+      document.getElementById('timer').innerHTML = `
+        <p><span>${months}</span> місяціу</p>
+        <p><span>${days}</span> дніу</p>
+        <p><span>${hours}</span> годин</p>
+        <p><span>${minutes}</span> хвилин</p>
+        <p><span>${seconds}</span> секууууунд</p>`;
+    }
+
+    // Update the timer every second
+    setInterval(updateTimer, 1000);
+
+    // Initial update
+    updateTimer();
+  </script>
+</body>
+
+</html>
